@@ -1,0 +1,15 @@
+.panelLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+
+.panelNavMenu {
+  flex: "auto";
+  min-width: 0;
+  max-width: 900;
+  text-align: "right";
+}
