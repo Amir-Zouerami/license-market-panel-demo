@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "IranSANSBold";
+  src: url("fonts/IRANSansX-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   font-family: "IranSANS", Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
@@ -24,4 +31,22 @@ no proper way of handling this in the docs
 .ant-menu-item {
   direction: rtl;
   text-align: right;
+}
+
+// ------------------ ERROR PAGE (404, etc.) STYLES ------------------
+.panel-error-page-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+  overflow: hidden;
+
+  h1 {
+    font-size: 3rem;
+    font-family: "IranSANSBold";
+    margin: 0;
+  }
 }
