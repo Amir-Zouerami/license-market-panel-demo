@@ -35,17 +35,17 @@ no proper way of handling this in the docs
 
 // ------------------ ERROR PAGE (404, etc.) STYLES ------------------
 .panel-error-page-container {
-  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   direction: rtl;
+  padding: 0 10px;
   overflow: hidden;
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: "IranSANSBold";
     margin: 0;
   }
