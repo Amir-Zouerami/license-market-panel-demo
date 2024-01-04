@@ -1,11 +1,16 @@
 import styles from "./login.module.scss";
 import { Button, Form, Input, Typography } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { useState } from "react";
+const { Title } = Typography;
 
 const Login = () => {
-  const { Title } = Typography;
-  const onSubmit = (values: any) => {
+  const [loading, setloading] = useState(false);
+
+  const submit = (values: any) => {
+    setloading(true);
     console.log("Received values of form: ", values);
+    setloading(false);
   };
 
   return (
@@ -14,9 +19,9 @@ const Login = () => {
       <div>
         <Form
           name="normal_login"
-          className="login-form"
+          // className="login-form"
           initialValues={{ remember: true }}
-          onFinish={onSubmit}
+          onFinish={submit}
         >
           <Form.Item
             name="username"
@@ -51,6 +56,7 @@ const Login = () => {
 
           <Form.Item>
             <Button
+              loading={loading}
               type="primary"
               size="large"
               htmlType="submit"

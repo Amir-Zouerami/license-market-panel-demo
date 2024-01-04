@@ -1,5 +1,5 @@
 import { Result } from "antd";
-import BackToMainPageButton from "../BackToMainPageButton";
+import BackToMainPageButton from "./BackToMainPageButton";
 
 const E403 = () => (
   <Result

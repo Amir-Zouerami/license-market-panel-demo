@@ -1,9 +1,10 @@
 import { useRouteError } from "react-router-dom";
 import { getErrorMessage } from "./router-error-check";
-import E404 from "./components/E404";
-import E403 from "./components/E403";
-import E500 from "./components/E500";
-import { Button } from "antd";
+import E404 from "@/components/routing/E404";
+import E403 from "@/components/routing/E403";
+import E500 from "@/components/routing/E500";
+import { Button, Typography } from "antd";
+const { Title } = Typography;
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -20,7 +21,9 @@ export default function ErrorPage() {
         <E500 />
       ) : (
         <>
-          <h1 style={{ margin: "20px 0" }}>متاسفانه خطایی پیش آمده است.</h1>
+          <Title style={{ margin: "20px 0" }}>
+            متاسفانه خطایی پیش آمده است.
+          </Title>
           <Button type="primary" href="/">
             برگشت به صفحه ی اصلی
           </Button>
