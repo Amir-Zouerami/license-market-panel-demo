@@ -1,5 +1,4 @@
-import Login from "@/pages/Auth/Login";
-import App from "@/App";
+import Root from "@/pages/root/Root";
 import Orders from "@/pages/Orders/Orders";
 import Products from "@/pages/Products/Products";
 import Operators from "@/pages/Operators/Operators";
@@ -8,11 +7,7 @@ import Roles from "@/pages/Roles/Roles";
 const routes = [
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "login",
-    element: <Login />,
+    element: <Root />,
   },
   {
     path: "orders",
