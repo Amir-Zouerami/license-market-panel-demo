@@ -10,7 +10,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ConfigProvider
       direction="rtl"
-      theme={{ token: { fontFamily: "IranSANS", fontSize: 16 } }}
+      theme={{
+        components: { Form: { itemMarginBottom: 35, labelFontSize: 14 } },
+        token: { fontFamily: "IranSANS", fontSize: 16 },
+      }}
     >
       <RouterProvider router={router} />
     </ConfigProvider>
