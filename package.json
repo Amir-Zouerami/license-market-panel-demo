@@ -10,14 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.17.1",
     "antd": "^5.12.7",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "sort-by": "^1.2.0",
-    "swr": "^2.2.4"
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
