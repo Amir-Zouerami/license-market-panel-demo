@@ -11,6 +11,12 @@
 .panelNavMenu {
   flex: auto;
   min-width: 0;
-  max-width: 900px;
+  max-width: 1200px;
   text-align: "right";
+}
+
+.navBarFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
