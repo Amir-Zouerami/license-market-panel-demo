@@ -1,10 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import tokenIsValid from "@/lib/JWT/tokenIsValid";
 import styles from "./Layout.module.scss";
+import Navbar from "./Navbar/Navbar";
 
 const Layout = () => {
-  const token = localStorage.getItem("token");
-  if (!token) return <Navigate to={"/login"} replace />;
+  const authed = tokenIsValid();
+  if (!authed) return <Navigate to={"/login"} replace />;
 
   return (
     <div dir="rtl">
