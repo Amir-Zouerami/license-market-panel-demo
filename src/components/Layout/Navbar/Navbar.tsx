@@ -1,9 +1,8 @@
 import UserProfileDropdown from "../UserProfileDropdown/UserProfileDropdown";
 import NavLinkList from "@/components/Layout/Navbar/NavLinkList";
 import styles from "../Layout.module.scss";
-import type { MenuProps } from "antd";
+import { Menu, MenuProps } from "antd";
 import { useState } from "react";
-import { Menu } from "antd";
 
 const Navbar = () => {
   const [current, setCurrent] = useState("home");
@@ -22,8 +21,7 @@ const Navbar = () => {
         items={NavLinkList}
       />
 
-      {/* TODO: pass name dynamically - from the API */}
-      <UserProfileDropdown name="امیر" />
+      <UserProfileDropdown />
     </div>
   );
 };
