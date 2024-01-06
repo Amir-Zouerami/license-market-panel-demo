@@ -10,20 +10,23 @@ import { TokenPayload } from "@/types/JWT";
  */
 const tokenIsValid = () => {
   const jwt = localStorage.getItem("token");
-  if (!jwt) return false;
+  if (!jwt) {
+    localStorage.clear();
+    return false;
+  }
 
   try {
     const payload: TokenPayload = JSON.parse(atob(jwt.split(".")[1]));
     const expInMilliseconds = payload.exp * 1000;
 
     if (Date.now() > expInMilliseconds) {
-      localStorage.removeItem("token");
+      localStorage.clear();
       return false;
     }
 
     return true;
   } catch (error) {
-    localStorage.removeItem("token");
+    localStorage.clear();
     return false;
   }
 };
