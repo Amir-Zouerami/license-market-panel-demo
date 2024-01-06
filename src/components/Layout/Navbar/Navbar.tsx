@@ -1,11 +1,13 @@
 import UserProfileDropdown from "../UserProfileDropdown/UserProfileDropdown";
 import NavLinkList from "@/components/Layout/Navbar/NavLinkList";
+import { useLocation } from "react-router-dom";
 import styles from "../Layout.module.scss";
 import { Menu, MenuProps } from "antd";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [current, setCurrent] = useState("home");
+  const location = useLocation();
+  const [current, setCurrent] = useState(location.pathname.substring(1));
 
   const onClick: MenuProps["onClick"] = e => {
     setCurrent(e.key);
