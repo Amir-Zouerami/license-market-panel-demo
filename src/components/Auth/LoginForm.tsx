@@ -1,7 +1,7 @@
-import { Button, Form, Input, notification } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input, notification } from "antd";
+import submitlogin from "@/lib/apiHandlers/Login/submitLogin";
 import { useNavigate } from "react-router-dom";
-import { login } from "@/lib/apiHandlers/user/forms";
 import { useState } from "react";
 
 const LoginForm = () => {
@@ -17,21 +17,13 @@ const LoginForm = () => {
         name="normal_login"
         initialValues={{ remember: true }}
         onFinish={async userLoginCredentials => {
-          const res = await login({
+          setloading(true);
+          await submitlogin({
             userLoginCredentials,
-            setloading,
+            api,
+            navigate,
           });
-
-          if (!res.ok) {
-            return api["error"]({
-              message: "خطا!",
-              description:
-                "اطلاعات وارد شده صحیح نمی باشد. لطفا از صحت اطلاعات وارد شده اطمینان حاصل کنید.",
-            });
-          }
-
-          localStorage.setItem("token", res.data.data.access_token);
-          return navigate("/", { replace: true });
+          setloading(false);
         }}
       >
         <Form.Item
