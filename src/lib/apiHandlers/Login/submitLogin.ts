@@ -1,10 +1,10 @@
-import type { NotificationInstance } from "antd/es/notification/interface";
+import { setAuthInLocalStorage } from "@/lib/localStorage/localStorage";
+import { NotificationInstance } from "antd/es/notification/interface";
+import { authenticate } from "@/lib/apiHandlers/Login/authenticate";
+import { NavigateFunction } from "react-router-dom";
+import { UserLoginCredentials } from "@/types/User";
 import { extractRole } from "./extractRole";
 import { assignRole } from "./assignRole";
-import type { NavigateFunction } from "react-router-dom";
-import { authenticate } from "@/lib/apiHandlers/Login/authenticate";
-import { UserLoginCredentials } from "@/types/User";
-import { setAuthInLocalStorage } from "./localStorage";
 
 interface SubmitLoginProps {
   userLoginCredentials: UserLoginCredentials;
