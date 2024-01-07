@@ -57,7 +57,6 @@ const TableSearch = () => {
             }
             icon={<SearchOutlined />}
             size="small"
-            // style={{ width: 90 }}
           >
             جست و جو
           </Button>

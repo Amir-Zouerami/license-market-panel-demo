@@ -1,7 +1,6 @@
 import type { ColumnType, ColumnsType } from "antd/es/table";
 import { Order } from "@/types/Orders";
 import OrderAction from "./OrderAction";
-// import { actionColumn } from "./ActionColumn";
 
 type searchPropsGeneratorType = (dataIndex: keyof Order) => ColumnType<Order>;
 
