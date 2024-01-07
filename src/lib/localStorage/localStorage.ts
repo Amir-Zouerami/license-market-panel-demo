@@ -13,3 +13,7 @@ export const setAuthInLocalStorage = (
   localStorage.setItem("role", roleName);
   localStorage.setItem("token", token);
 };
+
+export const getRoleName = () => {
+  return localStorage.getItem("role");
+};
