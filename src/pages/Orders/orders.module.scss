@@ -1,0 +1,14 @@
+.ordersContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  // width: 100%;
+  max-width: 100%;
+  text-align: right;
+}
+
+.content {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
