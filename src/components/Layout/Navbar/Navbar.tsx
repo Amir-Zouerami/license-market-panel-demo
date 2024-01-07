@@ -7,7 +7,8 @@ import { useState } from "react";
 
 const Navbar = () => {
   const location = useLocation();
-  const [current, setCurrent] = useState(location.pathname.substring(1));
+  const activePage = location.pathname.substring(1) || "home";
+  const [current, setCurrent] = useState(activePage);
 
   const onClick: MenuProps["onClick"] = e => {
     setCurrent(e.key);
