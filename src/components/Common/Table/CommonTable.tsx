@@ -1,8 +1,8 @@
-import { Table } from "antd";
-import GetDataFailed from "./GetDataFailed";
 import { addKeyToObjects } from "@/lib/utility/addKeyToObjects";
+import GetDataFailed from "../GetDataFailed";
 import { ColumnsType } from "antd/es/table";
 import { Dispatch } from "react";
+import { Table } from "antd";
 
 interface CommonTableProps<T extends Record<string, unknown>> {
   page: number;
