@@ -1,14 +1,14 @@
 import { useGetProducts } from "@/lib/apiHandlers/Products/GetAllProducts";
 import CommonTable from "@/components/Common/Table/CommonTable";
 import TableSearch from "@/components/Common/Table/TableSearch";
-import { getOrderTableColumns } from "./TableColumns";
+import { getProductTableColumns } from "./TableColumns";
 import React, { useState } from "react";
 import { Product } from "@/types/Products";
 
 const ProductsTable: React.FC = () => {
   const [page, setPage] = useState(1);
   const { data, isPending, error } = useGetProducts(page);
-  const columns = getOrderTableColumns(TableSearch<Product>());
+  const columns = getProductTableColumns(TableSearch<Product>());
 
   return (
     <CommonTable

@@ -6,7 +6,7 @@ type searchPropsGeneratorType = (
   dataIndex: keyof Product
 ) => ColumnType<Product>;
 
-export const getOrderTableColumns = (
+export const getProductTableColumns = (
   searchPropsGenerator: searchPropsGeneratorType
 ) => {
   const columns: ColumnsType<Product> = [
@@ -33,7 +33,7 @@ export const getOrderTableColumns = (
       key: "operations",
       fixed: "right",
       width: 100,
-      render: () => <ProductAction />,
+      render: row => <ProductAction currentRow={row} />,
     },
   ];
 
