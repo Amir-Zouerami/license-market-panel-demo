@@ -1,35 +1,11 @@
-import { submitNewProduct } from "@/lib/apiHandlers/Products/SubmitHandler";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import useCreateProduct from "@/lib/apiHandlers/Products/SubmitHandler";
 import { Button, Form, Input, notification } from "antd";
 import { MedicineBoxOutlined } from "@ant-design/icons";
 
 const CreateNewProduct = () => {
   const [api, contextHolder] = notification.useNotification({ rtl: true });
-  const QC = useQueryClient();
+  const { mutate, isPending } = useCreateProduct(api);
   const [form] = Form.useForm();
-
-  const { mutate, isPending } = useMutation({
-    mutationFn: submitNewProduct,
-    onSuccess: () => {
-      // This is to make useQuery fetch the list of products again
-      QC.invalidateQueries({
-        queryKey: ["getAllPaginatedProducts"],
-        exact: false,
-      });
-
-      return api["success"]({
-        message: "انجام شد!",
-        description: "محصول جدید ثبت شده است.",
-      });
-    },
-    onError: () => {
-      return api["error"]({
-        message: "خطا!",
-        description:
-          "خطایی رخ داده است. لطفا از یکتا بودن نام محصول اطمینان حاصل کنید.",
-      });
-    },
-  });
 
   return (
     <div style={{ margin: "30px 10px" }}>

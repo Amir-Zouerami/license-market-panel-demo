@@ -1,6 +1,8 @@
 import getToken from "@/lib/JWT/getToken";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { NotificationInstance } from "antd/es/notification/interface";
 
-export const submitNewProduct = (data: any) => {
+const submitNewProduct = (data: any) => {
   const PRODUCT_ENDPOINT = import.meta.env.VITE_API_URL + "product";
   const authToken = getToken();
 
@@ -26,3 +28,31 @@ export const submitNewProduct = (data: any) => {
     return res;
   });
 };
+
+const useCreateProduct = (api: NotificationInstance) => {
+  const QC = useQueryClient();
+
+  return useMutation({
+    mutationFn: submitNewProduct,
+    onSuccess: () => {
+      QC.invalidateQueries({
+        queryKey: ["getAllPaginatedProducts"],
+        exact: false,
+      });
+
+      return api["success"]({
+        message: "انجام شد!",
+        description: "محصول جدید ثبت شده است.",
+      });
+    },
+    onError: () => {
+      return api["error"]({
+        message: "خطا!",
+        description:
+          "خطایی رخ داده است. لطفا از یکتا بودن نام محصول اطمینان حاصل کنید.",
+      });
+    },
+  });
+};
+
+export default useCreateProduct;
