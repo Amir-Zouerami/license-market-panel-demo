@@ -1,8 +1,14 @@
+import tokenIsValid from "@/lib/JWT/tokenIsValid";
+import { Navigate } from "react-router-dom";
+
 interface GetOrdersFailedProps {
   type: "unauthorized" | "unknown";
 }
 
 const GetOrdersFailed = ({ type }: GetOrdersFailedProps) => {
+  const authed = tokenIsValid();
+  if (!authed) return <Navigate to={"/login"} replace />;
+
   return (
     <div
       style={{
