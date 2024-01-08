@@ -13,7 +13,7 @@ const OrdersTable: React.FC = () => {
   return (
     <CommonTable
       page={page}
-      totalPages={data?.data.meta.lastPage}
+      totalItems={data?.data.meta.total}
       setPage={setPage}
       data={data?.data.data}
       isPending={isPending}

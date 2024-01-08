@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 interface CommonTableProps<T extends Record<string, unknown>> {
   page: number;
-  totalPages: number | undefined;
+  totalItems: number | undefined;
   setPage: Dispatch<React.SetStateAction<number>>;
   data?: T[];
   columns: ColumnsType<T>;
@@ -16,7 +16,7 @@ interface CommonTableProps<T extends Record<string, unknown>> {
 
 const CommonTable = <T extends Record<string, unknown>>({
   page,
-  totalPages,
+  totalItems,
   setPage,
   data,
   columns,
@@ -40,7 +40,7 @@ const CommonTable = <T extends Record<string, unknown>>({
             position: ["bottomRight"],
             pageSize: ROWS_PER_PAGE,
             current: page,
-            total: totalPages ? totalPages + 1 : 1,
+            total: totalItems ?? 1,
             onChange: page => {
               setPage(page);
             },
