@@ -2,7 +2,7 @@ import { PaginatedOrders, responseIsError } from "@/types/Orders";
 import { useQuery } from "@tanstack/react-query";
 import getToken from "@/lib/JWT/getToken";
 
-export const useGetOrders = (page: number, perPage = 10) => {
+export const useGetOrders = (page: number, perPage = 2) => {
   const ORDERS_ENDPOINT =
     import.meta.env.VITE_API_URL + `order/page?page=${page}&perPage=${perPage}`;
   const token = getToken();
