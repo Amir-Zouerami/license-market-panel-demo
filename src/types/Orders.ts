@@ -7,7 +7,7 @@ interface OrdersMetadata {
   next: number;
 }
 
-export interface Order {
+export type Order = {
   id: number;
   orderNumber: string;
   orderTime: string;
@@ -16,7 +16,7 @@ export interface Order {
   assignee: number;
   productId: number;
   userId: number;
-}
+};
 
 interface PaginatedOrdersSuccess {
   timestamp: string;
