@@ -1,3 +1,5 @@
+//   -------------------- PRODUCT RETRIEVAL
+
 interface ProductsMetadata {
   total: number;
   lastPage: number;
@@ -38,6 +40,13 @@ export type PaginatedProducts =
   | PaginatedProductsSuccess
   | PaginatedProductsFail;
 
+export const responseIsError = (
+  response: PaginatedProducts
+): response is PaginatedProductsFail => {
+  if ("errors" in response) return true;
+  return false;
+};
+
 //   -------------------- PRODUCT CREATION
 
 export interface ProductCreationFailed {
@@ -64,9 +73,22 @@ export const productWasNotCreated = (
   return false;
 };
 
-export const responseIsError = (
-  response: PaginatedProducts
-): response is PaginatedProductsFail => {
-  if ("errors" in response) return true;
-  return false;
-};
+//   -------------------- PRODUCT DELETION
+
+interface ProductDeletedSuccessfully {
+  timestamp: string;
+  status: "success";
+  data: Product;
+  statusCode: 200;
+}
+
+interface ProductDeletionFailed {
+  timestamp: string;
+  status: "success";
+  data: null;
+  statusCode: 200;
+}
+
+export type ProductDeletion =
+  | ProductDeletedSuccessfully
+  | ProductDeletionFailed;
