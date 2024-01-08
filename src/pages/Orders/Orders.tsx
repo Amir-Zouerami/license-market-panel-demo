@@ -1,10 +1,7 @@
-// import { getRoleName } from "@/lib/localStorage/localStorage";
 import OrdersTable from "@/components/Orders/OrdersTable";
 import styles from "./orders.module.scss";
 
 const Orders = () => {
-  // const role = getRoleName();
-
   return (
     <div className={styles.ordersContainer}>
       <div className={styles.content}>
