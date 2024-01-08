@@ -4,11 +4,10 @@ import type { ColumnType } from "antd/es/table";
 import Highlighter from "react-highlight-words";
 import { Button, Input, Space } from "antd";
 import { useRef, useState } from "react";
-import { Order } from "@/types/Orders";
 import type { InputRef } from "antd";
 
-const TableSearch = () => {
-  type DataIndex = keyof Order;
+const TableSearch = function <T extends Record<string, unknown>>() {
+  type DataIndex = keyof T;
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef<InputRef>(null);
@@ -20,7 +19,7 @@ const TableSearch = () => {
   ) => {
     confirm();
     setSearchText(selectedKeys[0]);
-    setSearchedColumn(dataIndex);
+    setSearchedColumn(dataIndex as string);
   };
 
   const handleReset = (clearFilters: () => void) => {
@@ -28,7 +27,7 @@ const TableSearch = () => {
     setSearchText("");
   };
 
-  const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<Order> => ({
+  const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<T> => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -39,7 +38,7 @@ const TableSearch = () => {
       <div style={{ padding: 8 }} onKeyDown={e => e.stopPropagation()}>
         <Input
           ref={searchInput}
-          placeholder={`Search ${dataIndex}`}
+          placeholder={`جست و جو در ${dataIndex as string}`}
           value={selectedKeys[0]}
           onChange={e =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
