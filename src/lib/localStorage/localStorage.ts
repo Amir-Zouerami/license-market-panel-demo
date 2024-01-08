@@ -1,3 +1,5 @@
+import { RoleName } from "@/types/User";
+
 /**
  * sets the essential user data in localstorage
  * @param email
@@ -14,6 +16,16 @@ export const setAuthInLocalStorage = (
   localStorage.setItem("token", token);
 };
 
-export const getRoleName = () => {
-  return localStorage.getItem("role");
+export const getRoleName = (): RoleName => {
+  const storedRole = localStorage.getItem("role") ?? "user";
+
+  if (
+    storedRole === "super admin" ||
+    storedRole === "admin" ||
+    storedRole === "user"
+  ) {
+    return storedRole;
+  }
+
+  return "user";
 };

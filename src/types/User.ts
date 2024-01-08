@@ -1,4 +1,4 @@
-type RoleName = "super admin" | "admin" | "user";
+export type RoleName = "super admin" | "admin" | "user";
 export type Role = { id: number; name: RoleName };
 
 /**
