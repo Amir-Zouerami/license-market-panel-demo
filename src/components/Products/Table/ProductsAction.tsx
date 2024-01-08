@@ -1,20 +1,26 @@
-import { Dropdown, MenuProps } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
+import { GenerateActions } from "./GenerateActions";
+import { Dropdown, notification } from "antd";
+import { Product } from "@/types/Products";
 
-const ProductAction = () => {
-  const actions: MenuProps["items"] = [
-    { key: 1, label: "ویرایش" },
-    { key: 2, type: "divider" },
-    { key: 3, danger: true, label: "حذف" },
-  ];
+interface ProductActionProps {
+  currentRow: Product;
+}
+
+const ProductAction = ({ currentRow }: ProductActionProps) => {
+  const [api, contextHolder] = notification.useNotification({ rtl: true });
+  const items = GenerateActions(currentRow, api);
 
   return (
-    <Dropdown menu={{ items: actions }} placement="bottomLeft">
-      <a style={{ cursor: "pointer" }}>
-        انتخاب
-        <CaretDownOutlined style={{ verticalAlign: "middle" }} />
-      </a>
-    </Dropdown>
+    <>
+      <Dropdown menu={{ items }} placement="bottomLeft">
+        <a style={{ cursor: "pointer" }}>
+          {contextHolder}
+          انتخاب
+          <CaretDownOutlined style={{ verticalAlign: "middle" }} />
+        </a>
+      </Dropdown>
+    </>
   );
 };
 
